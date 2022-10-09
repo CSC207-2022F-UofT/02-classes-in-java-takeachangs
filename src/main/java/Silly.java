@@ -79,7 +79,14 @@ public class Silly implements Comparable<Silly>{
      *       strings (e.g. this.name = [first string] + [second string]).
      *       Make sure you document this method!
      */
-
+    /**
+     * Creates a new Silly object.
+     * This constructor takes in two Strings as arguments
+     *
+     * @param name1 first half String of this Silly instance's name
+     * @param name2 second half String of this Silly instance's name
+     */
+    public Silly(String name1, String name2) { this.name = name1 + name2; }
 
 
 
@@ -116,7 +123,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {};
+        int[] expected_values = {0, 1, 2, 3};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -134,6 +141,7 @@ public class Silly implements Comparable<Silly>{
     @Override
     public String toString(){
         // TODO (Task 3): Implement the body of this method!
+        return this.name;
     }
 
     /**
@@ -153,14 +161,16 @@ public class Silly implements Comparable<Silly>{
          *                We've started it by checking the type of o for you.
          *                You just need to return true if the names are equal.
          */
+
         if (!(o instanceof Silly)){
             return false;
         }
 
         Silly other = (Silly) o; // To access .name of o, we need to cast it.
-
+        return other.name.equals(this.name);
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
+
     }
 
     /**
@@ -194,6 +204,13 @@ public class Silly implements Comparable<Silly>{
          *                You can get the length of a string by using the
          *                .length() method.
          */
+        if (this.name.length() > other.name.length()) {
+            return 1;
+        } else if (this.name.length() < other.name.length()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 
     /*
